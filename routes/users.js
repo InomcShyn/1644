@@ -21,22 +21,16 @@ router.get('/', async function(req, res, next) {
     }
 });
 
-router.post("/crud", async(req, res, next) => {
-    try {
-        session = req.session;
-        console.log(req.body);
-        let results = await crud(req.body);
-
-        // refresh the page
-        let table = await display_products(req.body.shop_id);
-        res.render("users", {
-            title: "Welcome user to ATN shop",
-            name: session.user_id,
-            table_string: table,
-        });
-    } catch (error) {
-        console.error(error.message);
-    }
+router.post('/crud', async function(req, res, next) {
+    console.log(req.body);
+    let results = await crud(req.body, session);
+    //refresh the page
+    let table = await display_product(session.shop_id, session);
+    res.render('users', {
+        title: 'ATN Shop',
+        name: session.user_id,
+        table_string: table
+    })
 });
 
-module.exports = router;
+module.exports = router
