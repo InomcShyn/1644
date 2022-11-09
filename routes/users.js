@@ -1,6 +1,6 @@
 var express = require("express");
 const crud = require("../models/crud");
-const display_products = require("../models/table_display");
+const display_products = require("../models/product_table");
 var router = express.Router();
 var session;
 
