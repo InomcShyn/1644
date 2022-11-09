@@ -77,7 +77,7 @@ async function display_products(shop_id, session) {
     table_string += `</tr>`;
     //display all rows of table
     let num_rows = data.rowCount;
-    // console.log("Num rows: " + num_rows)
+    console.log("Num rows: " + num_rows)
     for (let i = 0; i < num_rows; i++) {
         table_string += `<form action="/users/crud" method="post">
                         <tr>`;
@@ -137,7 +137,11 @@ async function display_products(shop_id, session) {
         table_string += '</tr></form>';
     }
     table_string += '</table>'
+        // console.log("DATA: -->")
+        // console.log(data)
+        // console.log(table_string)
     return table_string;
+
 }
 
 module.exports = display_products;
